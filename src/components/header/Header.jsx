@@ -1,22 +1,19 @@
-import React from "react";
 
-function Header(params) {
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const Header = () => {
+    const navigate = useNavigate();
+
     return (
-        <header>
-            <img src="" alt="logo" role="presentation" />
-            <nav>
-                {true
-                ? (
-                    <ul>
-                        <li>로그인</li>
-                        <li>회원가입</li> 
-                    </ul>
-                )
-                : <></>
-                }
-            </nav>
-        </header>
-    )
+        <div>
+            <h1>Header</h1>
+            <div>
+                <button onClick={()=>{navigate('/signup')}}>Sign Up</button>
+                <button onClick={()=>{navigate('/login')}}>Login</button>
+            </div>
+        </div>
+    );
 }
 
 export default Header;
