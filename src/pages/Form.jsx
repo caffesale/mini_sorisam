@@ -2,9 +2,6 @@ import React from 'react';
 import Header from '../components/header/Header';
 
 const Form = () => {
-
-
-
     const handleSubmit = (event) => {
         event.preventDefault();
         // 백엔드로 POST
