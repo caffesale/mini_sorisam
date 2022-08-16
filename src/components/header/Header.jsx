@@ -6,13 +6,17 @@ const Header = () => {
     const navigate = useNavigate();
 
     return (
-        <div>
+        <nav>
             <h1>Header</h1>
-            <div>
-                <button onClick={()=>{navigate('/signup')}}>Sign Up</button>
-                <button onClick={()=>{navigate('/login')}}>Login</button>
-            </div>
-        </div>
+            <ul>
+                <li>
+                    <button onClick={()=>{navigate('/signup')}} type="button">Sign Up</button>
+                </li>
+                <li>
+                    <button onClick={()=>{navigate('/login')}} type="button">Login</button>
+                </li>
+            </ul>
+        </nav>
     );
 }
 
