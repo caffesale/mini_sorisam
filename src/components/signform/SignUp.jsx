@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useRef, useState } from "react";
 import authService from "../../api/axiosAuth";
 
@@ -16,14 +15,6 @@ function SignUp({toggleIsLogin}) {
             alert('아이디는 6글자 이상으로 지어주세요')
             return false;
         }
-=======
-import React from "react";
-
-function SignUp({toggleIsLogin}) {
-    const validationCheck = (password, passwordConfirm) => {
-        const regExp = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[`~!@#$%^&*()-_=+])[0-9a-zA-Z`~!@#$%^&*()-_=+]{8,24}$/
->>>>>>> dev
-
         if(!regExp.test(password)){
             alert('비밀번호는 8~24자의 영문, 숫자, 특수문자 조합이어야 합니다!')
             return false;
@@ -36,7 +27,6 @@ function SignUp({toggleIsLogin}) {
 
         return true;
     }
-<<<<<<< HEAD
     
     const onImgHandler = (e) => {
         setImg({[e.target.name] : e.target.file})
@@ -95,17 +85,11 @@ function SignUp({toggleIsLogin}) {
 
     return (
         <form onSubmit={onSubmitHandler} encType="multipart/form-data">
-=======
-
-    return (
-        <form action="" encType="multipart/form-data">
->>>>>>> dev
             <div>
                 <p>SignUp</p>
             </div>
             {/* id입력 */}
             <label htmlFor="id">ID</label>
-<<<<<<< HEAD
             <input ref={signupIdRef} id="id" type="text" required/>
             {/* pw입력 */}
             <label htmlFor="pw">Password</label>
@@ -119,21 +103,6 @@ function SignUp({toggleIsLogin}) {
             {/* 이미지 제출 */}
             <label htmlFor="img">User Image</label>
             <input onChange={onImgHandler} id="img" name="img" type="file" accept="image/png, image/jpeg"></input>
-=======
-            <input id="id" type="text" required/>
-            {/* pw입력 */}
-            <label htmlFor="pw">Password</label>
-            <input id="pw" type="password" required/>
-            {/* pw확인 */}
-            <label htmlFor="pw">Password Confirm</label>
-            <input id="pw" type="password" required/>
-            {/* 자기소개 */}
-            <label htmlFor="introduce">Introduce</label>
-            <input id="introduce" type="text" required/>
-            {/* 이미지 제출 */}
-            <label htmlFor="img">User Image</label>
-            <input id="img" type="file" accept="image/png, image/jpeg"></input>
->>>>>>> dev
             <div>
                 <button onClick={{toggleIsLogin}}>로그인 하러가기</button>
                 <button>확인</button>

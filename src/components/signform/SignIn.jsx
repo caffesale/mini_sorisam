@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 // axios 불러오기
 import authService from "../../api/axiosAuth";
@@ -61,29 +60,15 @@ function SignIn({toggleIsLogin}) {
 
     return (
         <form onSubmit={onSubmitHandler}>
-=======
-import React from "react";
-
-function SignIn({toggleIsLogin}) {
-    return (
-        <form action="">
->>>>>>> dev
             <div>
                 <p>SignIn</p>
             </div>
             {/* id입력 */}
             <label htmlFor="id">ID</label>
-<<<<<<< HEAD
             <input id="id" name="id" onChange={onChangeHandler} type="text" required/>
             {/* pw입력 */}
             <label htmlFor="pw">Password</label>
             <input id="pw" name="password" onChange={onChangeHandler} type="password" required/>
-=======
-            <input id="id" type="text" required/>
-            {/* pw입력 */}
-            <label htmlFor="pw">Password</label>
-            <input id="pw" type="password" required/>
->>>>>>> dev
             <div>
                 <button onClick={{toggleIsLogin}}>회원가입 하러가기</button>
                 <button>확인</button>

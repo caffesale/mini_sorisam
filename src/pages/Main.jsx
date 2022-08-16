@@ -12,8 +12,6 @@ const Main = () => {
 
     return (
         <div>
-            {/* 상단 헤더 부분 */}
-            <Header />
             {/* 글 작성 버튼 */}
             <button onClick={()=>{navigate('/posts')}}>글 작성</button>
             {/* 글 map 렌더링 */}

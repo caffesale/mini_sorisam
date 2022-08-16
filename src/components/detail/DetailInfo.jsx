@@ -1,5 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
 import { useParams } from "react-router-dom";
 import axiosComment from "../../api/axiosComment";
 
@@ -33,19 +32,6 @@ function DetailInfo() {
                 <audio controls>
                     <source src={filePath}></source>
                 </audio>
-=======
-
-function DetailInfo() {
-    return (
-        <section>
-            <figure>
-                <img src="" alt="profileImage" />
-                <figcaption>introduce</figcaption>
-            </figure>
-            <div>
-                <h2>title</h2>
-                <div>contents</div>
->>>>>>> dev
             </div>
         </section>
     )
