@@ -10,11 +10,12 @@ function DetailCommentSubmit({postid}) {
         const enteredComment = commentInputRef.current.value;
         const response = await axiosComment.post(`/${postid}/comment`,{
             contents: enteredComment
-        },
-        {
-            withCredentials: true
-        })
+        });
 
+        const addedComment = response.data()
+        setComments((prev) => ({
+            ...prev, addedComment
+        }))
         console.log(response);
     }
 
