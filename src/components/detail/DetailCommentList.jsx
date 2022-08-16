@@ -35,11 +35,12 @@ function DetailCommentList({postid}) {
 
     return (
         <section>
-            {commentList?.map((each) => {
+            {comments?.map((each) => {
+                const id = each.commentId;
                 return (
-                    <div key={comment_id}>
-                        {commentList.content}
-                        <DetailReCommentList recommentList={commentList.recommentList}/>
+                    <div key={id}>
+                        {each.contents}
+                        <DetailReCommentList recommentList={comments.recomments}/>
                     </div>
                 )
             })}
