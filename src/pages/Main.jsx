@@ -6,6 +6,7 @@ import Header from '../components/header/Header';
 const Main = () => {
     const navigate = useNavigate();
     // 백엔드로부터 받아오는 게시글 배열
+    //  posts = [{title: '', content: '', filepath: '', postingId: '', username: ''}, {...}, {...}, ...]
     const posts = [];
 
     return (

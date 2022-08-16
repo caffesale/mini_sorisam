@@ -2,8 +2,8 @@ import React from 'react';
 
 const Card = ({ post }) => {
     return (
-        <div>
-            <img src={post?.userImg} alt="user" />
+        <div key={post?.postingId}>
+            <img src={post?.userImg} alt={post?.username} />
             <audio autoplay="autoplay" loop="loop" preload="auto" controls="controls">
                 <source src={post?.filepath} />
             </audio>
