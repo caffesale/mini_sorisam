@@ -69,11 +69,12 @@ function SignUp({toggleIsLogin}) {
 
                     // formData가 제대로 생성되었는지 확인
                     // console.log(formData);
-                    const response = await authService.post('/signup', formData,{
-                        withCredentials: true
+                    const response = await authService.post('/signup', formData, {
+                        withCredentials: true,
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                        }
                     })
-                    // 리스폰스 확인용
-                    // console.log(response);
                 }
                 catch(error){
                     console.log({'이미지를 포함한 회원가입 실패':error.status})
@@ -102,7 +103,7 @@ function SignUp({toggleIsLogin}) {
             <input ref={signupIntroRef} id="introduce" type="text" required/>
             {/* 이미지 제출 */}
             <label htmlFor="img">User Image</label>
-            <input onChange={onImgHandler} id="img" name="img" type="file" accept="image/png, image/jpeg"></input>
+            <input onChange={onImgHandler} id="img" name="img" type="file" accept="image/png, image/jpeg, image/jpg"></input>
             <div>
                 <button onClick={{toggleIsLogin}}>로그인 하러가기</button>
                 <button>확인</button>

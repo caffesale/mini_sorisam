@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 // axios 불러오기
 import authService from "../../api/axiosAuth";
 //
-import { setCookie } from "../../api/cookie";
 import { useNavigate } from "react-router-dom";
+import { setCookie } from "../../shared/cookie";
 
 function SignIn({toggleIsLogin}) {
     const navigate = useNavigate()
@@ -21,24 +21,21 @@ function SignIn({toggleIsLogin}) {
         e.preventDefault();
         
         try{
-            // JSON.stringify해야하나? 
             const response = await authService.post('/login', {
                 username: user.id,
                 password: user.password
             },{
                 withCredentials: true
             })
+            // 고쳐야됨
+
+
             // console.log(response);
             // response 생김새 보고 아래 accessToken 수정하기
             const accessToken = response?.data?.token;
             // if 토큰이 있으면 navigate로 메인 페이지 보내는 로직 추가하기
             if(accessToken){
-                setCookie('userToken', {
-                    path: '/',
-                    secure: true,
-                    sameSite: "none",
-                })
-                setAuth({ loginStatus : true, accessToken})
+                setCookie('login_token', accessToken)
                 navigate('/');
             }
         }

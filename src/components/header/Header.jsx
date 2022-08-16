@@ -14,6 +14,9 @@ const Header = () => {
                     <li>
                         <button onClick={()=>{navigate('/signform')}} type="button">Login</button>
                     </li>
+                    <li>
+                        <button>로그아웃</button>
+                    </li>
                 </ul>
         </nav>
     );
