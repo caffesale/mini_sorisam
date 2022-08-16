@@ -5,10 +5,11 @@ import AuthContext from "../../context/AuthProvider";
 import authService from "../../api/axiosAuth";
 //
 import { setCookie } from "../../api/cookie";
-
+import { useNavigate } from "react-router-dom";
 
 function SignIn({toggleIsLogin}) {
     const { setAuth } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const [user, setUser] = useState({
         id: "",
@@ -31,6 +32,7 @@ function SignIn({toggleIsLogin}) {
                 withCredentials: true
             })
             // console.log(response);
+            // response 생김새 보고 아래 accessToken 수정하기
             const accessToken = response?.data?.token;
             // if 토큰이 있으면 navigate로 메인 페이지 보내는 로직 추가하기
             if(accessToken){
@@ -39,7 +41,8 @@ function SignIn({toggleIsLogin}) {
                     secure: true,
                     sameSite: "none",
                 })
-                setAuth(user.id, {accessToken})
+                setAuth({ loginStatus : true, accessToken})
+                navigate('/');
             }
         }
         catch(error) {
