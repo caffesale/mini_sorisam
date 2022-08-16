@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useRef } from "react";
 import axiosComment from "../../api/axiosComment";
 
@@ -22,6 +23,15 @@ function DetailCommentSubmit({postid}) {
         <form action="">
             <input type="text" ref={commentInputRef} />
             <button onSubmit={onSubmitHandler}>작성</button>
+=======
+import React from "react";
+
+function DetailCommentSubmit() {
+    return (
+        <form action="">
+            <input type="text" name="" value=""/>
+            <button>작성</button>
+>>>>>>> dev
         </form>
     )
 }
