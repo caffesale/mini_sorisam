@@ -5,4 +5,11 @@ const axiosComment = axios.create({
     baseURL: 'http://localhost:3000/api/posts'
 });
 
+axiosComment.interceptors.request.use((config) => {
+    const token = getCookie('token');
+    config.headers['Authorization'] = `Bearer ${token}`;
+    config.withCredentials = true;
+    return config;
+})
+
 export default axiosComment;

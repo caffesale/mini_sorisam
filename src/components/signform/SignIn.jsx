@@ -1,6 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
-// context불러오기
-import AuthContext from "../../context/AuthProvider";
+import React, { useEffect, useState } from "react";
 // axios 불러오기
 import authService from "../../api/axiosAuth";
 //
@@ -8,7 +6,6 @@ import { setCookie } from "../../api/cookie";
 import { useNavigate } from "react-router-dom";
 
 function SignIn({toggleIsLogin}) {
-    const { setAuth } = useContext(AuthContext);
     const navigate = useNavigate()
 
     const [user, setUser] = useState({

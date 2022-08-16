@@ -1,20 +1,37 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import axiosComment from "../../api/axiosComment";
 import DetailReCommentList from "./DetailReCommentList"
 
 function DetailCommentList({postid}) {
-    const readCommentList = async () => {
-        try{
-            const response = await axiosComment.get(`/${postid}/comment`,{
-                withCredentials: true
-            })
+    const [comments, setComments] = useState();
 
-            const commentList = response.result;
+    // 리렌더링 이슈 있을 수 있음
+    useEffect(() => {
+        let isMounted = true;
+        const CancelToken = axiosComment.CancelToken;
+        const source = CancelToken.source();
+        
+        const getComments = async () => {
+            try {
+                const response = await axiosComment.get(`${postid}/comment`, {
+                    cancelToken:  source.token
+                });
+                console.log(response.data);
+                isMounted && setComments(response.data);
+            }
+            catch (err) {
+                console.log(err);
+            }
         }
-        catch(error){
 
+        getComments();
+
+        return () => {
+            isMounted = false;
+            source.cancel('Operation canceled by the user');
         }
-    }
+    },[comments])
+
 
     return (
         <section>

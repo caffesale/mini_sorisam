@@ -28,6 +28,7 @@ function SignUp({toggleIsLogin}) {
 
         return true;
     }
+    
     const onImgHandler = (e) => {
         setImg({[e.target.name] : e.target.file})
     }
