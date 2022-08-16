@@ -8,7 +8,6 @@ import DetailInfo from "../components/detail/DetailInfo";
 function Detail(props) {
     const [comments, setComments] = useState();
 
-        // 리렌더링 이슈 있을 수 있음
         useEffect(() => {
             let isMounted = true;
             const CancelToken = axiosComment.CancelToken;
@@ -16,7 +15,7 @@ function Detail(props) {
             
             const getComments = async () => {
                 try {
-                    const response = await axiosComment.get(`${postid}/comment`, {
+                    const response = await axiosComment.get(`${props.postid}/comment`, {
                         cancelToken:  source.token
                     });
                     console.log(response.data);
