@@ -10,9 +10,6 @@ const Form = () => {
 
     return (
         <div>
-            {/* 상단 헤더 부분 */}
-            <Header />
-
             <form onSubmit={handleSubmit}>
                 {/* 글 제목 입력 */}
                 <label htmlFor='title'>제목</label>

@@ -34,7 +34,7 @@ function SignIn({toggleIsLogin}) {
             const accessToken = response?.data?.token;
             // if 토큰이 있으면 navigate로 메인 페이지 보내는 로직 추가하기
             if(accessToken){
-                setCookie('userToken', token, {
+                setCookie('userToken', {
                     path: '/',
                     secure: true,
                     sameSite: "none",
