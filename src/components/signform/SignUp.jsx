@@ -85,30 +85,32 @@ function SignUp({toggleIsLogin}) {
     }
 
     return (
-        <form onSubmit={onSubmitHandler} encType="multipart/form-data">
-            <div>
-                <p>SignUp</p>
-            </div>
-            {/* id입력 */}
-            <label htmlFor="id">ID</label>
-            <input ref={signupIdRef} id="id" type="text" required/>
-            {/* pw입력 */}
-            <label htmlFor="pw">Password</label>
-            <input ref={signupPwRef} id="pw" type="password" required/>
-            {/* pw확인 */}
-            <label htmlFor="pw">Password Confirm</label>
-            <input ref={signupPwConfirmRef} id="pw" type="password" required/>
-            {/* 자기소개 */}
-            <label htmlFor="introduce">Introduce</label>
-            <input ref={signupIntroRef} id="introduce" type="text" required/>
-            {/* 이미지 제출 */}
-            <label htmlFor="img">User Image</label>
-            <input onChange={onImgHandler} id="img" name="img" type="file" accept="image/png, image/jpeg, image/jpg"></input>
-            <div>
-                <button onClick={{toggleIsLogin}}>로그인 하러가기</button>
-                <button>확인</button>
-            </div>
-        </form>
+        <fieldset>
+            <form onSubmit={onSubmitHandler} encType="multipart/form-data">
+                <div>
+                    <p>SignUp</p>
+                </div>
+                {/* id입력 */}
+                <label htmlFor="id">ID</label>
+                <input ref={signupIdRef} id="id" type="text" required/>
+                {/* pw입력 */}
+                <label htmlFor="pw">Password</label>
+                <input ref={signupPwRef} id="pw" type="password" required/>
+                {/* pw확인 */}
+                <label htmlFor="pw">Password Confirm</label>
+                <input ref={signupPwConfirmRef} id="pw" type="password" required/>
+                {/* 자기소개 */}
+                <label htmlFor="introduce">Introduce</label>
+                <input ref={signupIntroRef} id="introduce" type="text" required/>
+                {/* 이미지 제출 */}
+                <label htmlFor="img">User Image</label>
+                <input onChange={onImgHandler} id="img" name="img" type="file" accept="image/png, image/jpeg, image/jpg"></input>
+                <div>
+                    <button onClick={toggleIsLogin}>로그인 하러가기</button>
+                    <button>확인</button>
+                </div>
+            </form>
+        </fieldset>
     )
 }
 

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import axiosComment from "../../api/axiosComment";
 
-function DetailCommentSubmit({postid}) {
+function DetailCommentSubmit({postid, comments, setComments}) {
     const commentInputRef = useRef();
 
     const onSubmitHandler = async (event) => {

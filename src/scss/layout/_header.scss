@@ -1,5 +1,31 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
 .header {
+    background-color: #333;
+    color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 1rem;
+}
+
+.nav {
+    margin: 10px 5px;
+    text-align: center;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__item{
+        display: inline-block;
+        margin:0 5px;
+    }
+}
+
+.nav__item {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 4px;
 }

@@ -19,7 +19,7 @@ function SignIn({toggleIsLogin}) {
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-        
+        console.log({user});
         try{
             const response = await authService.post('/login', {
                 username: user.id,
@@ -27,8 +27,6 @@ function SignIn({toggleIsLogin}) {
             },{
                 withCredentials: true
             })
-            // 고쳐야됨
-
 
             // console.log(response);
             // response 생김새 보고 아래 accessToken 수정하기
@@ -67,7 +65,7 @@ function SignIn({toggleIsLogin}) {
             <label htmlFor="pw">Password</label>
             <input id="pw" name="password" onChange={onChangeHandler} type="password" required/>
             <div>
-                <button onClick={{toggleIsLogin}}>회원가입 하러가기</button>
+                <button onClick={toggleIsLogin}>회원가입 하러가기</button>
                 <button>확인</button>
             </div>
         </form>

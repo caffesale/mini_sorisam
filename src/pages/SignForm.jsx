@@ -12,7 +12,7 @@ const SignForm = () => {
 
     return (
         <>
-            ? <SignUp toggleIsLogin={toggleIsLogin}/>
+            {/* ? <SignUp toggleIsLogin={toggleIsLogin}/> */}
             : <SignIn toggleIsLogin={toggleIsLogin}/>
         </>
     )
