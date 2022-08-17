@@ -1,27 +1,47 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../scss/dist/css/main.css'
 import { removeCookie } from '../../shared/cookie';
 
+//전역 context 테스트
+import AuthContext from '../../context/AuthProvider';
+
 const Header = () => {
+    const { auth, setAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
     return (
-        <nav className='header'>
-            <h1>Header</h1>
+            <nav className='header'>
+                <h1>Header</h1>
                 <ul className='nav'>
+                    { auth.isLogin === false
+                    ? <>
                     <li className='nav__item'>
-                        <button  onClick={()=>{navigate('/signform')}} type="button">Sign Up</button>
+                        <button  onClick={()=>{navigate('/signUp')}} type="button">Sign Up</button>
                     </li>
                     <li className='nav__item'>
-                        <button  onClick={()=>{navigate('/signform')}} type="button">Login</button>
+                        <button  onClick={()=>{navigate('/signIn')}} type="button">Login</button>
                     </li>
-                    <li className='nav__item'>
-                        <button onClick={()=>{removeCookie('login_token')}}>로그아웃</button>
+                    </>
+                    : <>
+                    <li>
+                    <button  onClick={()=>{
+                        removeCookie('login_token');
+                        setAuth({
+                                isLogin : false,
+                                accessToken : undefined
+                        })
+                        }} type="button">로그아웃</button>
                     </li>
+                    </>
+
+                    }
+                    
                 </ul>
-        </nav>
-    );
-}
+            </nav>
+        )
+    }
+
+
 
 export default Header;

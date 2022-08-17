@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import authService from "../../api/axiosAuth";
 
 function SignUp({toggleIsLogin}) {
+    const navigate = useNavigate();
     const signupIdRef = useRef();
     const signupPwRef = useRef();
     const signupPwConfirmRef = useRef();
@@ -106,7 +108,7 @@ function SignUp({toggleIsLogin}) {
                 <label htmlFor="img">User Image</label>
                 <input onChange={onImgHandler} id="img" name="img" type="file" accept="image/png, image/jpeg, image/jpg"></input>
                 <div>
-                    <button onClick={toggleIsLogin}>로그인 하러가기</button>
+                    <button type="button" onClick={() => {navigate(-1)}}>취소하기</button>
                     <button>확인</button>
                 </div>
             </form>

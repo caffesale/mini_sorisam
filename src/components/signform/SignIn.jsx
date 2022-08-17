@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // axios 불러오기
 import authService from "../../api/axiosAuth";
 //
 import { useNavigate } from "react-router-dom";
 import { setCookie } from "../../shared/cookie";
 
+// 전역 context 불러오기
+import AuthContext from "../../context/AuthProvider";
+
 function SignIn({toggleIsLogin}) {
+    const {auth, setAuth} = useContext(AuthContext);
     const navigate = useNavigate()
 
     const [user, setUser] = useState({
@@ -19,7 +23,6 @@ function SignIn({toggleIsLogin}) {
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-        console.log({user});
         try{
             const response = await authService.post('/login', {
                 username: user.id,
@@ -33,8 +36,14 @@ function SignIn({toggleIsLogin}) {
             const accessToken = response?.data?.token;
             // if 토큰이 있으면 navigate로 메인 페이지 보내는 로직 추가하기
             if(accessToken){
-                setCookie('login_token', accessToken)
-                navigate('/');
+                setCookie('login_token', accessToken);
+                // 통신 성공하면 시도해볼 것
+                // setAuth({
+                //     isLogin : true,
+                //     accessToken : accessToken
+                // })
+                // console.log(auth);
+                // navigate('/');
             }
         }
         catch(error) {
@@ -65,7 +74,7 @@ function SignIn({toggleIsLogin}) {
             <label htmlFor="pw">Password</label>
             <input id="pw" name="password" onChange={onChangeHandler} type="password" required/>
             <div>
-                <button onClick={toggleIsLogin}>회원가입 하러가기</button>
+                <button onClick={() => {navigate(-1)}}>취소</button>
                 <button>확인</button>
             </div>
         </form>

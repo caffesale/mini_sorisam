@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import DetailList from "../components/detail/DetailCommentList";
 import DetailCommentSubmit from "../components/detail/DetailCommentSubmit";
 import DetailInfo from "../components/detail/DetailInfo";
 import axiosComment from "../api/axiosComment";
+import AuthContext from "../context/AuthProvider";
 
 // Detail props로 내려오나? 
 function Detail(props) {
+    const {auth} = useContext(AuthContext);
     const [comments, setComments] = useState();
 
         useEffect(() => {
@@ -35,7 +37,10 @@ function Detail(props) {
     return (
         <div>
             <DetailInfo postid={props.postid} comments={comments} setComments={setComments}/>
-            <DetailCommentSubmit postid={props.postid} comments={comments} setComments={setComments}/>
+            { auth.isLogin === true
+            ? <DetailCommentSubmit postid={props.postid} comments={comments} setComments={setComments}/>
+            : <></>
+            }
             <DetailList postid={props.postid} comments={comments} setComments={setComments}/>
         </div>
     );

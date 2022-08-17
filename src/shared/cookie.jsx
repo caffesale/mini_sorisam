@@ -8,6 +8,13 @@ export const setCookie = (name, value) => {
     })
 }
 
+// 쿠키 저장 안되면 이걸로 해볼 것
+// export const setCookie = (name, value, exp) => {
+//     let date = new Date();
+//     date.setTime(exp);
+//     document.cookie = `${name}=${value}; expires=${date.toUTCString()}`;
+// }
+
 export const getCookie = (name) => {
     return cookies.get(name);
 }

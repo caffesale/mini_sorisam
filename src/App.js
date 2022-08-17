@@ -6,10 +6,21 @@ import authService from './api/axiosAuth';
 import Header from './components/header/Header';
 import Form from './pages/Form';
 import Main from './pages/Main';
-import SignForm from './pages/SignForm';
 import Detail from './pages/Detail';
+import SignIn from './components/signform/SignIn';
+import SignUp from './components/signform/SignUp';
 
-// 전역 context 
+// 로그인 확인하는 로직
+// const loginCheck = () => {
+//     if(user) {
+//         setIsSigned(true);
+//         // state에 쿠키 값 넣어주기
+//     }
+//     else{
+//         setIsSigned(false);
+//     }
+// }
+
 
 function App() {
   return (
@@ -18,7 +29,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/posts' element={<Form />} />
-        <Route path='/signform' element={<SignForm />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/signin' element={<SignIn />} />
         <Route path='/detail' element={<Detail />} />
       </Routes>
     </div>

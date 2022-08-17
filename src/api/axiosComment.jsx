@@ -28,3 +28,11 @@ axiosComment.interceptors.response.use(
 )
 
 export default axiosComment;
+
+// 이 아래 임시대피소
+
+// 댓글 수정
+// axiosComment.put(`${postId}/comment/${commentId}`, data)
+
+// 댓글 삭제
+// axiosComment.delete(`${postId}/comment/${commentId}`)
