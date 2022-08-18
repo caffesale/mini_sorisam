@@ -3,17 +3,17 @@ import { useParams } from "react-router-dom";
 import axiosComment from "../../api/axiosComment";
 import DetailCommentSubmit from "./DetailCommentSubmit";
 
-function DetailComment({username, contents}) {
+function DetailComment({username, contents, postid}) {
     const [modify, setModify] = useState(false);
     const { cmntId } = useParams();
     const modifyInputRef = useRef();
-    const postid = postid;
 
     async function modifyHandler() {
         const enteredModiftInput = modifyInputRef.current.value;
-        // const response = await axiosComment.put(`/${postid}/comments/${cmntId}`, {
-        //     contents: enteredModiftInput
-        // })
+        const response = await axiosComment.put(`/${postid}/comments/${cmntId}`, {
+            contents: enteredModiftInput
+        })
+        console.log(response);
     }
 
     async function deleteComment() {

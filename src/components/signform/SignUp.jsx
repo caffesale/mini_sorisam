@@ -9,7 +9,7 @@ function SignUp({toggleIsLogin}) {
     const signupPwRef = useRef();
     const signupPwConfirmRef = useRef();
     const signupIntroRef = useRef();
-    const [profileImage, setprofileImage] = useState();
+    const [profileImage, setProfileImage] = useState();
 
     const validationCheck = (id, password, passwordConfirm) => {
         const regExp = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[`~!@#$%^&*()-_=+])[0-9a-zA-Z`~!@#$%^&*()-_=+]{8,24}$/;
@@ -32,7 +32,7 @@ function SignUp({toggleIsLogin}) {
     }
     
     const onImgHandler = (e) => {
-        profileImage({profileImage : e.target.file})
+        setProfileImage({profileImage : e.target.file})
     }
 
     const onSubmitHandler = async (e) => {
@@ -47,27 +47,26 @@ function SignUp({toggleIsLogin}) {
 
         // 유효성검사
         if(validationCheck(idValue, pwValue, pwConfirmValue)){
-            // true면 img파일이 있는지 확인하기
-            console.log(profileImage);
-            if (profileImage === undefined) {
+            // if (profileImage === undefined) {
+            //     try{
+            //         const response = await authService.post('/signup', {
+            //             username: idValue,
+            //             password: pwValue,
+            //             img: "",
+            //             intro: introValue
+            //         },{
+            //             withCredentials: true
+            //         })
+            //         // 회원가입 성공했나 확인
+            //         // console.log(response)
+            //     }
+            //     catch(error){
+            //         console.log({'이미지를 포함하지 않는 회원가입 실패 에러' : error.status});
+            //     }
+            // }
+            // else{
                 try{
-                    const response = await authService.post('/signup', {
-                        username: idValue,
-                        password: pwValue,
-                        img: "",
-                        intro: introValue
-                    },{
-                        withCredentials: true
-                    })
-                    // 회원가입 성공했나 확인
-                    // console.log(response)
-                }
-                catch(error){
-                    console.log({'이미지를 포함하지 않는 회원가입 실패 에러' : error.status});
-                }
-            }
-            else{
-                try{
+                    console.log(profileImage);
                     const formData = new FormData();
                     formData.append('username', idValue);
                     formData.append('password', pwValue);
@@ -77,16 +76,17 @@ function SignUp({toggleIsLogin}) {
                     // formData가 제대로 생성되었는지 확인
                     // console.log(formData);
                     const response = await authService.post('/signup', formData, {
-                        withCredentials: true,
+                        // withCredentials: true,
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         }
                     })
+                    console.log(response);
                 }
                 catch(error){
                     console.log({'이미지를 포함한 회원가입 실패':error.status})
                 }
-            }
+            // }
 
         }
     }

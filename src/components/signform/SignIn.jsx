@@ -27,11 +27,9 @@ function SignIn({toggleIsLogin}) {
             const response = await authService.post('/login', {
                 username: user.id,
                 password: user.password
-            },{
-                withCredentials: true
             })
 
-            // console.log(response);
+            console.log(response);
             // response 생김새 보고 아래 accessToken 수정하기
             const accessToken = response?.data?.token;
             // if 토큰이 있으면 navigate로 메인 페이지 보내는 로직 추가하기
@@ -63,21 +61,23 @@ function SignIn({toggleIsLogin}) {
     }
 
     return (
-        <form onSubmit={onSubmitHandler}>
-            <div>
-                <p>SignIn</p>
-            </div>
-            {/* id입력 */}
-            <label htmlFor="id">ID</label>
-            <input id="id" name="id" onChange={onChangeHandler} type="text" required/>
-            {/* pw입력 */}
-            <label htmlFor="pw">Password</label>
-            <input id="pw" name="password" onChange={onChangeHandler} type="password" required/>
-            <div>
-                <button onClick={() => {navigate(-1)}}>취소</button>
-                <button>확인</button>
-            </div>
-        </form>
+        <fieldset>
+            <form onSubmit={onSubmitHandler}>
+                <div>
+                    <p>SignIn</p>
+                </div>
+                {/* id입력 */}
+                <label htmlFor="id">ID</label>
+                <input id="id" name="id" onChange={onChangeHandler} type="text" required/>
+                {/* pw입력 */}
+                <label htmlFor="pw">Password</label>
+                <input id="pw" name="password" onChange={onChangeHandler} type="password" required/>
+                <div>
+                    <button onClick={() => {navigate(-1)}}>취소</button>
+                    <button>확인</button>
+                </div>
+            </form>
+        </fieldset>
     )
 }
 
