@@ -4,9 +4,6 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Card from '../components/card/Card';
 
-import Header from '../components/header/Header';
-
-const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Main = () => {
     const navigate = useNavigate();
@@ -16,16 +13,25 @@ const Main = () => {
     // 백엔드로부터 받아오는 게시글 배열
     //  posts = [{title: '', content: '', filepath: '', postingId: '', username: ''}, {...}, {...}, ...]
 
+    // useEffect(async () => {
+    //     try{
+    //         const response = await axios.get('http://54.180.220.222/api/posts');
+    //         setPosts([...response.data]);
+    //     }
+    //     catch(err){
+    //         console.log(err)
+    //     }
+    // }, [])
+
     useEffect(() => {
         axios({
             method: 'GET',
-            url: `${SERVER_URL}/api/posts`,
-
+            url: 'http://54.180.220.222/api/posts',
         }).then(response => {
-            console.log(response);
+            // console.log(response);
             setPosts([...response.data]);
         }).catch(err => {
-            console.error(err);
+            console.log(err);
         });
     }, []);
     return (
