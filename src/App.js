@@ -10,18 +10,6 @@ import Detail from './pages/Detail';
 import SignIn from './components/signform/SignIn';
 import SignUp from './components/signform/SignUp';
 
-// 로그인 확인하는 로직
-// const loginCheck = () => {
-//     if(user) {
-//         setIsSigned(true);
-//         // state에 쿠키 값 넣어주기
-//     }
-//     else{
-//         setIsSigned(false);
-//     }
-// }
-
-
 function App() {
   return (
     <div className="App">

@@ -25,7 +25,7 @@ function SignIn({toggleIsLogin}) {
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         try{
-            const response = await axios.post('http://54.180.220.222/api/login', {
+            const response = await authService.post('/login', {
                 username: user.id,
                 password: user.password
             })

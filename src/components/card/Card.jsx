@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Card = ({ post }) => {
     return (
-        <div key={post?.postingId}>
+        <div>
             <img src={post?.userImg} alt={post?.username} />
-            <audio autoplay="autoplay" loop="loop" preload="auto" controls="controls">
-                <source src={post?.filepath} />
+            <audio autoPlay="autoplay" loop="loop" preload="auto" controls="controls">
+                <source src={post?.filePath} />
             </audio>
-            <p>{post?.title}</p>
+            <Link to={'/detail/'+post?.postingId}>{post?.title}</Link>
         </div>
     );
 }
