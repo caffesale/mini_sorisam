@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../../api/axiosAuth";
+import street from '../../source/image/street.jpg'
 
 function SignUp({toggleIsLogin}) {
     const navigate = useNavigate();
@@ -8,7 +9,7 @@ function SignUp({toggleIsLogin}) {
     const signupPwRef = useRef();
     const signupPwConfirmRef = useRef();
     const signupIntroRef = useRef();
-    const [img, setImg] = useState();
+    const [profileImage, setprofileImage] = useState();
 
     const validationCheck = (id, password, passwordConfirm) => {
         const regExp = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[`~!@#$%^&*()-_=+])[0-9a-zA-Z`~!@#$%^&*()-_=+]{8,24}$/;
@@ -31,7 +32,7 @@ function SignUp({toggleIsLogin}) {
     }
     
     const onImgHandler = (e) => {
-        setImg({[e.target.name] : e.target.file})
+        profileImage({profileImage : e.target.file})
     }
 
     const onSubmitHandler = async (e) => {
@@ -41,10 +42,14 @@ function SignUp({toggleIsLogin}) {
         const pwValue = signupPwRef.current.value;
         const pwConfirmValue = signupPwConfirmRef.current.value;
         const introValue = signupIntroRef.current.value;
+
+
+
         // 유효성검사
         if(validationCheck(idValue, pwValue, pwConfirmValue)){
             // true면 img파일이 있는지 확인하기
-            if (img.img) {
+            console.log(profileImage);
+            if (profileImage === undefined) {
                 try{
                     const response = await authService.post('/signup', {
                         username: idValue,
@@ -66,7 +71,7 @@ function SignUp({toggleIsLogin}) {
                     const formData = new FormData();
                     formData.append('username', idValue);
                     formData.append('password', pwValue);
-                    formData.append('img', img.img);
+                    formData.append('img', profileImage.img);
                     formData.append('intro', introValue);
 
                     // formData가 제대로 생성되었는지 확인
@@ -99,14 +104,14 @@ function SignUp({toggleIsLogin}) {
                 <label htmlFor="pw">Password</label>
                 <input ref={signupPwRef} id="pw" type="password" required/>
                 {/* pw확인 */}
-                <label htmlFor="pw">Password Confirm</label>
-                <input ref={signupPwConfirmRef} id="pw" type="password" required/>
+                <label htmlFor="pwConfirm">Password Confirm</label>
+                <input ref={signupPwConfirmRef} id="pwConfirm" type="password" required/>
                 {/* 자기소개 */}
                 <label htmlFor="introduce">Introduce</label>
                 <input ref={signupIntroRef} id="introduce" type="text" required/>
                 {/* 이미지 제출 */}
                 <label htmlFor="img">User Image</label>
-                <input onChange={onImgHandler} id="img" name="img" type="file" accept="image/png, image/jpeg, image/jpg"></input>
+                <input onChange={onImgHandler} id="img" name="profileImage" type="file" accept="image/png, image/jpeg, image/jpg"></input>
                 <div>
                     <button type="button" onClick={() => {navigate(-1)}}>취소하기</button>
                     <button>확인</button>

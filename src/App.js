@@ -31,7 +31,7 @@ function App() {
         <Route path='/posts' element={<Form />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/signin' element={<SignIn />} />
-        <Route path='/detail' element={<Detail />} />
+        <Route path='/detail/:id' element={<Detail />} />
       </Routes>
     </div>
   );

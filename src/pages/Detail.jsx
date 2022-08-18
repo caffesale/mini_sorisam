@@ -4,11 +4,12 @@ import DetailCommentSubmit from "../components/detail/DetailCommentSubmit";
 import DetailInfo from "../components/detail/DetailInfo";
 import axiosComment from "../api/axiosComment";
 import AuthContext from "../context/AuthProvider";
+import { useParams } from "react-router-dom";
 
-// Detail props로 내려오나? 
-function Detail(props) {
+function Detail() {
     const {auth} = useContext(AuthContext);
     const [comments, setComments] = useState();
+    const {postid} = useParams();
 
         useEffect(() => {
             let isMounted = true;
@@ -17,7 +18,7 @@ function Detail(props) {
             
             const getComments = async () => {
                 try {
-                    const response = await axiosComment.get(`${props.postid}/comment`, {
+                    const response = await axiosComment.get(`${postid}/comment`, {
                         cancelToken:  source.token
                     });
                     console.log(response.data);
@@ -36,12 +37,12 @@ function Detail(props) {
 
     return (
         <div>
-            <DetailInfo postid={props.postid} comments={comments} setComments={setComments}/>
+            <DetailInfo/>
             { auth.isLogin === true
-            ? <DetailCommentSubmit postid={props.postid} comments={comments} setComments={setComments}/>
+            ? <DetailCommentSubmit postid={postid} comments={comments} setComments={setComments}/>
             : <></>
             }
-            <DetailList postid={props.postid} comments={comments} setComments={setComments}/>
+            <DetailList postid={postid} comments={comments} setComments={setComments} />
         </div>
     );
 }
