@@ -113,4 +113,20 @@ select {
   text-decoration: none;
   background-color: bisque;
   cursor: pointer;
+}
+
+.form {
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.form__btn {
+  margin: 8px;
+}
+.form__file-container {
+  margin: 5px;
+  margin-left: 100px;
+  padding: 5px;
 }/*# sourceMappingURL=main.css.map */

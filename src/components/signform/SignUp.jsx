@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../../api/axiosAuth";
@@ -32,14 +33,16 @@ function SignUp() {
                 // const formData = new FormData();
                 // formData.append('img', files);
 
-                const data = { username:idValue, password:pwValue, repassword:pwConfirmValue, intro:introValue};
+                const data ={ requestDto: { username:idValue, password:pwValue, repassword:pwConfirmValue, intro:introValue}};
                 // formData.append('requestDto', JSON.stringify(data));
 
-                const response = await authService.post('/signup', JSON.stringify(data), {
+                const config = {
                     headers: {
-                        'Content-Type': 'multipart/form-data'
+                        'content-type': 'multipart/form-data'
                     }
-                })
+                }
+
+                const response = await authService.post('/signup', data, config)
 
                 console.log(response);
             }
@@ -50,7 +53,7 @@ function SignUp() {
 
     return (
         <fieldset>
-            <form onSubmit={onSubmitHandler}>
+            <form className="form" onSubmit={onSubmitHandler}>
                 <div>
                     <p>SignUp</p>
                 </div>
@@ -67,11 +70,12 @@ function SignUp() {
                 <label htmlFor="introduce">Introduce</label>
                 <input ref={signupIntroRef} id="introduce" type="text" required/>
                 {/* 이미지 제출 */}
-                <label htmlFor="img">User Image</label>
-                <input onChange={onImgHandler} id="img" type="file" accept="image/png, image/jpeg, image/jpg"></input>
+                <div className="form__file-container">
+                    <input onChange={onImgHandler} id="img" type="file" accept="image/png, image/jpeg, image/jpg"></input>
+                </div>
                 <div>
-                    <button type="button" onClick={() => {navigate(-1)}}>취소하기</button>
-                    <button>확인</button>
+                    <button className="form__btn" type="button" onClick={() => {navigate(-1)}}>취소하기</button>
+                    <button className="form__btn">확인</button>
                 </div>
             </form>
         </fieldset>

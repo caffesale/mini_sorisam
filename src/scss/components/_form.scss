@@ -1,8 +1,16 @@
 .form {
-    margin: 20px auto;
+    margin: 30px auto;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
 
+    &__btn{
+        margin: 8px;
+    }
+
+    &__file-container{
+        margin: 5px;
+        padding: 5px;
+    }
+}

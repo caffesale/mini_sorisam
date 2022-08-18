@@ -7,6 +7,7 @@ import { setCookie } from "../../shared/cookie";
 
 // 전역 context 불러오기
 import AuthContext from "../../context/AuthProvider";
+import axios from "axios";
 
 function SignIn({toggleIsLogin}) {
     const {auth, setAuth} = useContext(AuthContext);
@@ -24,25 +25,20 @@ function SignIn({toggleIsLogin}) {
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         try{
-            const response = await authService.post('/login', {
+            const response = await axios.post('http://54.180.220.222/api/login', {
                 username: user.id,
                 password: user.password
             })
 
-            console.log(response);
-            // response 생김새 보고 아래 accessToken 수정하기
-            const accessToken = response?.data?.token;
+            const accessToken = response?.data.result;
             // if 토큰이 있으면 navigate로 메인 페이지 보내는 로직 추가하기
-            if(accessToken){
-                setCookie('login_token', accessToken);
-                // 통신 성공하면 시도해볼 것
-                // setAuth({
-                //     isLogin : true,
-                //     accessToken : accessToken
-                // })
-                // console.log(auth);
-                // navigate('/');
-            }
+            setCookie('login_token', accessToken);
+            setAuth({
+                isLogin : true,
+                accessToken : accessToken
+            })
+            console.log(auth);
+            navigate('/');
         }
         catch(error) {
             if(!error.response){
@@ -55,14 +51,14 @@ function SignIn({toggleIsLogin}) {
                 console.log('Unauthorized : 액세스 권한이 없습니다.');
             }
             else{
-                console.log(error.response);
+                console.log(error);
             }
         }
     }
 
     return (
         <fieldset>
-            <form onSubmit={onSubmitHandler}>
+            <form className="form" onSubmit={onSubmitHandler}>
                 <div>
                     <p>SignIn</p>
                 </div>
@@ -73,8 +69,8 @@ function SignIn({toggleIsLogin}) {
                 <label htmlFor="pw">Password</label>
                 <input id="pw" name="password" onChange={onChangeHandler} type="password" required/>
                 <div>
-                    <button onClick={() => {navigate(-1)}}>취소</button>
-                    <button>확인</button>
+                    <button className="form__btn" onClick={() => {navigate(-1)}}>취소</button>
+                    <button className="form__btn">확인</button>
                 </div>
             </form>
         </fieldset>
