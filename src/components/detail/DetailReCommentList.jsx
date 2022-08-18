@@ -1,17 +1,17 @@
-import React from "react";
+// import React from "react";
 
-function DetailReCommentList({recommentList}) {
-    return (
-        <>
-            {recommentList?.map((each) => {
-                return (
-                    <div key={each.recommentId}>
-                        {each.contents}
-                    </div>
-                )
-            })}
-        </>
-    );
-}
+// function DetailReCommentList({recommentList}) {
+//     return (
+//         <>
+//             {recommentList?.map((each) => {
+//                 return (
+//                     <div key={each.recommentId}>
+//                         {each.contents}
+//                     </div>
+//                 )
+//             })}
+//         </>
+//     );
+// }
 
-export default DetailReCommentList;
+// export default DetailReCommentList;

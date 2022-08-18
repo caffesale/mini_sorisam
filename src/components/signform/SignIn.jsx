@@ -55,7 +55,7 @@ function SignIn({toggleIsLogin}) {
                 console.log('Unauthorized : 액세스 권한이 없습니다.');
             }
             else{
-                console.log('로그인에 그냥 실패했습니다');
+                console.log(error.response);
             }
         }
     }

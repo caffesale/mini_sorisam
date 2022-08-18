@@ -7,16 +7,6 @@ const authService = axios.create({
     baseURL: `${SERVER_URL}/api`
 });
 
-
-authService.interceptors.request.use((config) => {
-    config.headers.post['Content-Type'] = 'multipart/form-data';
-    return config;
-    },
-    (error) => {
-        // console.log(error);
-}
-)
-
 export default authService;
 
 

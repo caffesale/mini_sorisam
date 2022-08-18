@@ -9,7 +9,7 @@ function DetailCommentList({postid, comments, setComments}) {
                 {comments?.map((each) => {
                     const id = each.commentId;
                     return (
-                        <DetailComment key={id} username={username} contents={contents} postid={postid}/>
+                        <DetailComment key={id} username={username} contents={contents} postid={postid} comments={comments} setComments={setComments}/>
                     )
                 })}
             </section>
