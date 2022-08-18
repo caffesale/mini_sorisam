@@ -11,17 +11,13 @@ function Detail() {
     const [comments, setComments] = useState();
     const {postid} = useParams();
 
-        useEffect(() => {
+    
+    useEffect(() => {
             let isMounted = true;
-            const CancelToken = axiosComment.CancelToken;
-            const source = CancelToken.source();
-            
+
             const getComments = async () => {
                 try {
-                    const response = await axiosComment.get(`${postid}/comment`, {
-                        cancelToken:  source.token
-                    });
-                    console.log(response.data);
+                    const response = await axiosComment.get(`${postid}/comment`);
                     isMounted && setComments(response.data);
                 }
                 catch (err) {
@@ -31,10 +27,8 @@ function Detail() {
             getComments();
             return () => {
                 isMounted = false;
-                source.cancel('Operation canceled by the user');
             }
-        },[comments])
-
+    },[])
     return (
         <div>
             <DetailInfo/>
